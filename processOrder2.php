@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Pack 207 Trails End - Order Results</title>
+!.. Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase ..!
 </head>
 <body>
 <h1>Pack 207</h1>
@@ -9,8 +10,7 @@
 
 <?php
 	include('dbconnect.php'); # Rebecca's edit
-// Rebecca's edit I rearranged some of the code so that the variables are changed before displayed. And I changed a few syntax things.
-	
+// Rebecca's edit I rearranged some of the code so that the variables are changed before displayed. And I changed a few syntax things.	
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
 	$fdon = $_POST['50don'];
