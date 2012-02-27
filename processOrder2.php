@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Pack 207 Trails End - Order Results</title>
-!.. Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase ..!
+<!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
 <h1>Pack 207</h1>
