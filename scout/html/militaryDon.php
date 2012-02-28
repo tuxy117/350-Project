@@ -1,157 +1,47 @@
 <html>
 <head>
-	<title>Pack 207 Trails End - Order Results</title>
+	<title>Military Donations</title>
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
-<h1>Pack 207</h1>
-<h2>Order Results</h2>
+<h1>Total Donations to the Military</h1>
+
 
 
 <?php
+
+//Ben Tuxbury query to find the total amount donated to the military
+	//first total the 50 dollar donations.
 	include('dbconnect.php'); 
+			// Use the same thing that would be typed into MySql
+	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '50 military donation'";
 	
-	
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','$ftdon','$fdon','$a' )";
-
 	$result = mysqli_query($db, $query) or die("Error Querying Database");
-					#mysqli_close($db);
-	echo "<p> 50 dollar military donation at quantity $fdon </p>";
+			// set it so the row can actually be accessed
+	$row = mysqli_fetch_array($result);
+			// extract the variable needed
+	$mil50 = $row['SUM(quantity)'];
+	
+	$const50 = 50;
+	$sum50s = $mil50 * $const50;
 	
 	
-
-
-	if ($tdoncount>= "1") 
-	{
-	$b = $b * $tdoncount;
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','$tdon', '$tdoncount','$b')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in 30 dollar donation");
-					#mysqli_close($db);
-	echo "<p> 30 dollar military donation at quantity $tdoncount </p>";
-	}
-	else{ 
-	$b= 0;
-	}
-	if ($sweetNsavory>= "1")	# Rebecca's edit I inserted this for James
-	{
-	$c = $c * $sweetNsavory;	
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','Cheese Lovers Collection','$sweetNsavory','$c')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Cheese lovers");
-	 echo "<p> Sweet and Savory at quantity $sweetNsavory</p>";
 	
-	}
-	else{ 
-	$c= 0;
-	}
-	if ($cheeseqty>= "1")
-	{
-	$d = $d * $cheeseqty;	
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','Cheese Lovers Collection','$cheeseqty','$d')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Cheese lovers");
-	 echo "<p> Cheese Lover's Collection at quantity $cheeseqty</p>";
+	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '30 dollar miltary donation'";
 	
-	}
-	else{ 
-	$d= 0;
-	}
-	if ($pretzelqty>= "1") 
-	{
-	$e = $e * $pretzelqty;
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','White Chocolatey Pretzels','$pretzelqty','$e')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Chocolate Pretzels");
-	echo "<p> White Chocolatey Pretzels at quantity $pretzelqty</p>";
+	$result = mysqli_query($db, $query) or die("Error Querying Database");
+			
+	$row = mysqli_fetch_array($result);
+			
+	$mil30 = $row['SUM(quantity)'];
 	
-	}
-	else{ 
-	$e= 0;
-	}
-	if ($tripleD>= "1") 
-	{
-	$f = $f * $tripleD;
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','Chocolate Triple Delight','$tripleD','$f')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Chocolate Triple");
-	echo "<p> Chocolate Triple Delight at quantity $tripleD</p>";
+	$const30 = 30;
+	$sum30s = $mil30 * $const30;
+	$sumTotal = $sum30s + $sum50s;
 	
-	}
-	else{ 
-	$f= 0;
-	}
-	if ($kettleqty>= "1")
-	{
-	$g = $g * $kettleqty;
-	$query = "insert into popcorn_sales(firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','18pk Kettle corn','$kettleqty','$g')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thorwn in 18pk Kettle Corn");
-	 echo "<p> 18pk Kettle corn at quantity $kettleqty</p>";
-	
-	}
-	else{ 
-	$g= 0;
-	}
-	if ($Ubutterqty>= "1") 
-	{
-	$h = $h * $Ubutterqty;
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','18pk Unbelievable Butter','$Ubutterqty','$h')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in 18 pk butter lovers");
-	echo "<p> 18pk Unbelievable Butter at quantity $Ubutterqty</p>";
-	
-	}
-	else{ 
-	$h= 0;
-	}
-	if ($butterLqty>= "1")
-	{
-	$i = $i * $butterLqty;
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','18pk Butter Light','$butterLqty','$i')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in 18 pk butter light");
-	 echo "<p> 18pk Butter Light at quantity $butterLqty</p>";
-	
-	}
-	else{ 
-	$i= 0;
-	} 
-	if ($ccqty>= "1")
-	{
-	$j = $j * $ccqty;
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','Caramel Corn alm/cas/pec','$ccqty','$j')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Carmel Corn combo");
-	 echo "<p> Caramel Corn alm/cas/pec at quantity $ccqty</p>";
-	
-	}
-	else{ 
-	$j= 0;
-	} 
-	if ($Caramelqty>= "1")
-	{
-	$k = $k * $Caramelqty;
-	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
-			('$firstname','$lastname','Caramel Corn','$Caramelqty','$k')";
-	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Carmel Corn single");
-	 echo "<p> Caramel Corn at quantity $Caramelqty</p>";
-	
-	} 
-	
-	else{
-	$k=0;
-	}
-	
-	$a = $a+$b+$c+$d+$e+$f+$g+$h+$i+$j+$k;
-	echo "<p> Your total is $a</p>";
-	echo "<p>Order processed at. ";
-	echo date('H:i, jS F Y');
-	echo "</p>";
-
-
+	echo "<p> $$sumTotal </p>";
 	
 ?>
+<h2>Thank you for your generosity</h2>
 </body>
 <html>
