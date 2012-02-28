@@ -1,4 +1,0 @@
-Project - Make a webpage that allows the user to order Boy Scouts popcorn.
-              The entered data will be stored in databases for "easy" access.
-
-
