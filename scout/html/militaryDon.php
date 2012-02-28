@@ -4,6 +4,11 @@
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
+<tr>
+	<td colspan = "10">
+		<a href="index.html" > <img src="images/header.jpg"> </a>
+		</td>
+
 <h1>Total Donations to the Military</h1>
 
 
