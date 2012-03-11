@@ -47,7 +47,8 @@
 	echo "<p> $$sumTotal </p>";
 	
 	// What is this code for? And why is it here? ... It's broken on my computer....Ben
-	$query = "select product FROM popcorn_sales WHERE quantity > 1 LIMIT 1";
+	// It's "working" syntactically but not logically...will work on it later...Angie
+	$query = "select product, sum(quantity) FROM popcorn_sales ORDER BY product LIMIT 1";
 	$result = mysqli_query($db, $query) or die ("Error Querying Database ");
 	$row = mysqli_fetch_array ($result);
 	$pop = $row[$result];
