@@ -15,6 +15,7 @@ CREATE TABLE popcorn_sales(
 CREATE TABLE scout (
   scout_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name varchar(50) NOT NULL,
+  troop VARCHAR(10),
   sales_id INT NOT NULL,
   CONSTRAINT popcorn_sales_sales_id_fk FOREIGN KEY (sales_id) REFERENCES popcorn_sales (sales_id)
 );
