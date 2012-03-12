@@ -4,6 +4,11 @@
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
+<tr>
+	<td colspan = "10">
+		<a href="index.html" > <img src="images/header.jpg"> </a>
+		</td>
+
 <h1>Total Donations to the Military</h1>
 
 
@@ -40,6 +45,17 @@
 	$sumTotal = $sum30s + $sum50s;
 	
 	echo "<p> $$sumTotal </p>";
+	
+	// What is this code for? And why is it here? ... It's broken on my computer....Ben
+	// It's "working" syntactically but not logically...will work on it later...Angie
+	// order by sum quantity desc?....ben
+	// I got it!  - Angie
+	$query = "select product, sum(quantity) FROM popcorn_sales GROUP BY product ORDER BY 
+		sum(quantity) DESC LIMIT 1";
+	$result = mysqli_query($db, $query) or die ("Error Querying Database ");
+	$row = mysqli_fetch_array ($result);
+	$pop = $row[$result];
+	echo "<p> $pop </p>";
 	
 ?>
 <h2>Thank you for your generosity</h2>
