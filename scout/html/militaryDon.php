@@ -46,10 +46,15 @@
 	
 	echo "<p> $$sumTotal </p>";
 	
+	// Highest military donation by Angie
+	$query = "SELECT product, quantity FROM popcorn_sales WHERE product LIKE '%donation%' ORDER BY quantity
+	DESC LIMIT 1";
+	$result = mysqli_query($db, $query) or die("Error Querying Database");
+	
 	// What is this code for? And why is it here? ... It's broken on my computer....Ben
 	// It's "working" syntactically but not logically...will work on it later...Angie
 	// order by sum quantity desc?....ben
-	// I got it!  - Angie
+	// I got it!  Here is our most popular order!  - Angie
 	$query = "select product, sum(quantity) FROM popcorn_sales GROUP BY product ORDER BY 
 		sum(quantity) DESC LIMIT 1";
 	$result = mysqli_query($db, $query) or die ("Error Querying Database ");
