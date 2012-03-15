@@ -4,6 +4,17 @@
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
+<tr>
+<?php
+//bens snazzy code
+?>
+	<td colspan = "10">
+		<a href="index.html" > <img src="images/header.jpg"> </a>
+		</td>
+<?php
+//end bens snazzy code
+?>
+
 <h1>Pack 207</h1>
 <h2>Order Results</h2>
 
