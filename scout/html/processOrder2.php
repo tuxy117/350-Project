@@ -4,17 +4,6 @@
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
-<tr>
-<?php
-//bens snazzy code
-?>
-	<td colspan = "10">
-		<a href="index.html" > <img src="images/header.jpg"> </a>
-		</td>
-<?php
-//end bens snazzy code
-?>
-
 <h1>Pack 207</h1>
 <h2>Order Results</h2>
 
@@ -24,10 +13,12 @@
 // Rebecca's edit I rearranged some of the code so that the variables are changed before displayed. And I changed a few syntax things.	
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
+	$sname=$_POST['sname'];
+	$stroop=$_POST['stroop'];
 	$fdon = $_POST['50don'];
 	$ftdon = '50 military donation';
 	$a = 50.00;
-	$tdon= '30 dollar military donation'; // Angie spelled military correctly :)
+	$tdon= '30 dollar miltary donation';
 	$tdoncount = $_POST['30don'];	# Rebecca's edit
 	$b = 30;
 	
@@ -54,11 +45,19 @@
 	if ($fdon>= "1") 
 	{
 	$a = $a * $fdon;
+	
+	
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','$ftdon','$fdon','$a' )";
-
+	
 	$result = mysqli_query($db, $query) or die("Error Querying Database");
-					#mysqli_close($db);
+	
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query	
+					
 	echo "<p> 50 dollar military donation at quantity $fdon </p>";
 	}
 	else{ 
@@ -72,7 +71,11 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','$tdon', '$tdoncount','$b')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in 30 dollar donation");
-					#mysqli_close($db);
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query	
 	echo "<p> 30 dollar military donation at quantity $tdoncount </p>";
 	}
 	else{ 
@@ -84,7 +87,12 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','Cheese Lovers Collection','$sweetNsavory','$c')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Cheese lovers");
-	 echo "<p> Sweet and Savory at quantity $sweetNsavory</p>";
+	 //Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query	
+	echo "<p> Sweet and Savory at quantity $sweetNsavory</p>";
 	
 	}
 	else{ 
@@ -96,7 +104,12 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','Cheese Lovers Collection','$cheeseqty','$d')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Cheese lovers");
-	 echo "<p> Cheese Lover's Collection at quantity $cheeseqty</p>";
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query	
+	echo "<p> Cheese Lover's Collection at quantity $cheeseqty</p>";
 	
 	}
 	else{ 
@@ -108,6 +121,12 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','White Chocolatey Pretzels','$pretzelqty','$e')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Chocolate Pretzels");
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query
+	
 	echo "<p> White Chocolatey Pretzels at quantity $pretzelqty</p>";
 	
 	}
@@ -120,6 +139,11 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','Chocolate Triple Delight','$tripleD','$f')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Chocolate Triple");
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query
 	echo "<p> Chocolate Triple Delight at quantity $tripleD</p>";
 	
 	}
@@ -132,6 +156,11 @@
 	$query = "insert into popcorn_sales(firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','18pk Kettle corn','$kettleqty','$g')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thorwn in 18pk Kettle Corn");
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query
 	 echo "<p> 18pk Kettle corn at quantity $kettleqty</p>";
 	
 	}
@@ -144,6 +173,11 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','18pk Unbelievable Butter','$Ubutterqty','$h')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in 18 pk butter lovers");
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query
 	echo "<p> 18pk Unbelievable Butter at quantity $Ubutterqty</p>";
 	
 	}
@@ -156,6 +190,11 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','18pk Butter Light','$butterLqty','$i')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in 18 pk butter light");
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query
 	 echo "<p> 18pk Butter Light at quantity $butterLqty</p>";
 	
 	}
@@ -168,6 +207,11 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','Caramel Corn alm/cas/pec','$ccqty','$j')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Carmel Corn combo");
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query
 	 echo "<p> Caramel Corn alm/cas/pec at quantity $ccqty</p>";
 	
 	}
@@ -180,6 +224,11 @@
 	$query = "insert into popcorn_sales (firstname,lastname,product,quantity,price) values
 			('$firstname','$lastname','Caramel Corn','$Caramelqty','$k')";
 	$result = mysqli_query($db, $query) or die("Error Querying Database thrown in Carmel Corn single");
+	//Rebecca Wright's - Inserting the popcorn_sales id into the foreign key in scout.
+	$sales_id=mysqli_insert_id($db);
+	$query2="INSERT INTO scout (name,sales_id,troop) VALUES ('$sname',$sales_id,'$sTroop');";
+	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part");
+	//End of Rebecca's query
 	 echo "<p> Caramel Corn at quantity $Caramelqty</p>";
 	
 	} 
