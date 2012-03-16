@@ -18,7 +18,7 @@
 	$fdon = $_POST['50don'];
 	$ftdon = '50 military donation';
 	$a = 50.00;
-	$tdon= '30 dollar miltary donation';
+	$tdon= '30 military donation';  // Angie updated spelling of "military"
 	$tdoncount = $_POST['30don'];	# Rebecca's edit
 	$b = 30;
 	
