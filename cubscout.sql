@@ -8,7 +8,7 @@ CREATE TABLE popcorn_sales(
 	lastname VARCHAR(30),
 	product varchar(50) DEFAULT NULL,
 	quantity int(11) DEFAULT NULL,
-	price decimal(5,2) DEFAULT NULL,
+	price decimal(7,2) DEFAULT NULL,
 	PRIMARY KEY (sales_id)
 );
 
