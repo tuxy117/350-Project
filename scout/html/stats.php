@@ -69,6 +69,15 @@
 	echo "<p> $pop </p>";
 	
 ?>
+
+<h3>Troops participating in Sales</h3>
+<?php
+	$query = "select troop from scout";
+	$result = mysqli_query($db, $query) or die("Error querying database");
+	$row = mysqli_fetch_array($result);
+	$tp = $row[0];
+	echo "<p>$tp </p>";
+?>
 <h2>Thank you for your generosity!</h2>
 </body>
 <html>
