@@ -74,9 +74,14 @@
 <?php
 	$query = "select troop from scout";
 	$result = mysqli_query($db, $query) or die("Error querying database");
-	$row = mysqli_fetch_array($result);
+	$np ="";
+	while ($row = mysqli_fetch_array($result))
+{
 	$tp = $row[0];
-	echo "<p>$tp </p>";
+	if ($tp== $np) echo "<p> </p>";
+	else echo "<p> $tp </p>";
+	$np = $tp;	
+}
 ?>
 <h2>Thank you for your generosity!</h2>
 </body>
