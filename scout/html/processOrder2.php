@@ -1,4 +1,7 @@
 <html>
+<td colspan = "10">
+		<a href="index.html" > <img src="images/header.jpg"> </a>
+		</td>
 <head>
 	<title>Pack 207 Trails End - Order Results</title>
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
