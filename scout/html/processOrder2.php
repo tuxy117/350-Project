@@ -13,8 +13,8 @@
 // Rebecca's edit I rearranged some of the code so that the variables are changed before displayed. And I changed a few syntax things.	
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
-	$sname=$_POST['sname'];
-	$stroop=$_POST['stroop'];
+	$sname=$_POST['scoutname'];
+	$stroop=$_POST['pack'];
 	$fdon = $_POST['50don'];
 	$ftdon = '50 military donation';
 	$a = 50.00;
