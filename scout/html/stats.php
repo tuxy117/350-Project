@@ -72,6 +72,7 @@
 
 <h3>Troops participating in Sales</h3>
 <?php
+	//scout troops participating in popcorn sales by Jim Jewett
 	$query = "select troop from scout";
 	$result = mysqli_query($db, $query) or die("Error querying database");
 	$np ="";
