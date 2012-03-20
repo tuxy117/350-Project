@@ -3,20 +3,21 @@ CUB SCOUT POPCORN SALES
 Instructions:
 
 Open Git Bash
-cd to folder desired
-git clone (read only website)
-
-Make folder in xampp/htdocs
-Copy contents from original folder to htdocs folder
+cd to c:/xampp/htdocs
+git clone git://github.com/tuxy117/350-Project.git
 
 Open command line window
-source c:/xampp/htdocs/(name)/(sql file)
+source c:/xampp/htdocs/350-Project/cubscout.sql
 SHOW databases;
-USE (database);
+USE cubscout;
 SHOW tables;
 
 Open web browser
-Go to localhost/(name)
+Go to localhost/350-Project/scout/html/index.html
+Play around and order some popcorn!
 
-Go back to mysql
-Select * from (name);
+Go back to command line window to mysql prompt
+Select * from popcorn_sales; (to see your orders)
+Select * from scout; (to see scouts you entered)
+
+Thanks for using our Cub Scout Popcorn Sales website and database!
