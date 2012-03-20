@@ -84,6 +84,20 @@
 	$np = $tp;	
 }
 ?>
+
+<h3>Top Scouts</h3>
+<?php
+	$query = "select name from scout group by name order by count(name) desc";
+	$result = mysqli_query($db, $query) or die("Error querying database");
+	$wp ="";
+	while ($row = mysqli_fetch_array($result))
+	{
+	$ap = $row[0];
+	if ($ap== $wp) echo "<p> </p>";
+	else echo "<p> $ap </p>";
+	$wp = $ap;	
+}
+	?>
 <h2>Thank you for your generosity!</h2>
 </body>
 <html>
