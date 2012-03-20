@@ -4,9 +4,12 @@ Instructions:
 
 Open Git Bash
 cd to c:/xampp/htdocs
+Make folder called 350-Project
+cd to 350-Project
 git clone git://github.com/tuxy117/350-Project.git
 
 Open command line window
+Get in to mysql
 source c:/xampp/htdocs/350-Project/cubscout.sql
 SHOW databases;
 USE cubscout;
