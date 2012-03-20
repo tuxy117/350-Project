@@ -16,8 +16,8 @@
 // Rebecca's edit I rearranged some of the code so that the variables are changed before displayed. And I changed a few syntax things.	
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
-	$sname=$_POST['scoutname'];
-	$stroop=$_POST['pack'];
+	$sname=$_POST['sname'];  //names here caused (didnt match) Ben fixed
+	$stroop=$_POST['stroop'];
 	$fdon = $_POST['50don'];
 	$ftdon = '50 military donation';
 	$a = 50.00;
