@@ -2,20 +2,41 @@
 CREATE DATABASE IF NOT EXISTS cubscout;
 GRANT ALL PRIVILEGES ON cubscout.* to 'assist'@'localhost' identified by 'scoutpw';
 USE cubscout;
-CREATE TABLE popcorn_sales(
-	sales_id int NOT NULL auto_increment,
-	firstname VARCHAR(25),
-	lastname VARCHAR(30),
-	product varchar(50) DEFAULT NULL,
-	quantity int(11) DEFAULT NULL,
-	price decimal(7,2) DEFAULT NULL,
-	PRIMARY KEY (sales_id)
+
+CREATE TABLE customerOrder(
+	order_id int NOT NULL auto_increment,
+	total decimal(7,2) DEFAULT NULL,
+	PRIMARY KEY (order_id)
 );
 
-CREATE TABLE scout (
-  scout_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name varchar(50) NOT NULL,
-  troop VARCHAR(10),
-  sales_id INT NOT NULL,
-  CONSTRAINT popcorn_sales_sales_id_fk FOREIGN KEY (sales_id) REFERENCES popcorn_sales (sales_id)
+CREATE TABLE product(
+	product_id int NOT NULL auto_increment,
+	name VARCHAR(40) NOT NULL,
+	price decimal(5,2) DEFAULT NULL,
+	PRIMARY KEY (product_id)
 );
+CREATE TABLE scout(
+	scout_id int NOT NULL auto_increment,
+	Name VARCHAR(60) NOT NULL,
+	Troop VARCHAR(10),
+	PRIMARY KEY (scout_id)
+);
+
+CREATE TABLE buyer(
+	buyer_id int NOT NULL AUTO_INCREMENT,
+	name VARCHAR(60),
+	scoutID INT NOT NULL,
+	CONSTRAINT scout_scoutID_fk FOREIGN KEY (scoutID) REFERENCES scout(scout_id),
+	PRIMARY KEY(buyer_id)
+);
+CREATE TABLE itemOrdered(
+	id int NOT NULL AUTO_INCREMENT,
+	orderID INT NOT NULL,
+	CONSTRAINT customerOrder_orderID_fk FOREIGN KEY (orderID) REFERENCES customerOrder(order_id),
+	productID INT NOT NULL,
+	CONSTRAINT product_product_id_fk FOREIGN KEY (productID) REFERENCES product(product_id),
+	quantity int,
+	totalPerItem decimal(6,2),
+	PRIMARY KEY (id)
+);
+	
