@@ -41,4 +41,3 @@ CREATE TABLE itemordered(
 	totalPerItem decimal(6,2),
 	PRIMARY KEY (id)
 );
-	
