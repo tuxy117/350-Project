@@ -27,12 +27,14 @@ CREATE TABLE buyer(
 	name VARCHAR(60),
 	scoutID INT NOT NULL,
 	CONSTRAINT scout_scoutID_fk FOREIGN KEY (scoutID) REFERENCES scout(scout_id),
+	orderNum INT NOT NULL,
+	CONSTRAINT customerOrder_orderID_fk FOREIGN KEY (orderNum) REFERENCES customerOrder(order_id),
 	PRIMARY KEY(buyer_id)
 );
-CREATE TABLE itemOrdered(
+CREATE TABLE itemordered(
 	id int NOT NULL AUTO_INCREMENT,
 	orderID INT NOT NULL,
-	CONSTRAINT customerOrder_orderID_fk FOREIGN KEY (orderID) REFERENCES customerOrder(order_id),
+	CONSTRAINT buyer_orderNum_fk FOREIGN KEY (orderID) REFERENCES buyer(orderNum),
 	productID INT NOT NULL,
 	CONSTRAINT product_product_id_fk FOREIGN KEY (productID) REFERENCES product(product_id),
 	quantity int,
