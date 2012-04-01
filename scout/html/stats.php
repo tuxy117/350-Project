@@ -22,7 +22,7 @@
 			// Use the same thing that would be typed into MySql
 	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '50 military donation'";
 	
-	$result = mysqli_query($db, $query) or die("Error Querying Database");
+	$result = mysqli_query($db, $query) or die("Error Querying Database in 50 military donation");
 			// set it so the row can actually be accessed
 	$row = mysqli_fetch_array($result);
 			// extract the variable needed
@@ -33,9 +33,9 @@
 	
 	
 	
-	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '30 dollar miltary donation'";
+	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '30 dollar military donation'";
 	
-	$result = mysqli_query($db, $query) or die("Error Querying Database");
+	$result = mysqli_query($db, $query) or die("Error Querying Database in 30 military donation");
 			
 	$row = mysqli_fetch_array($result);
 			
@@ -56,12 +56,12 @@
 	$query = "SELECT product.name as productname, itemordered.quantity AS quantity FROM itemordered INNER JOIN 
 	product ON product.product_id = itemordered.productID WHERE product.name LIKE '%donation%' ORDER BY 
 	itemordered.quantity DESC LIMIT 1";
-	$result = mysqli_query($db, $query) or die("Error Querying Database");
+	$result = mysqli_query($db, $query) or die("Error Querying Database in highest military donation");
 	
 	// Here is our most popular order!  - Angie
 	$query2 = "select product.name as productname, sum(itemordered.quantity) AS quantity FROM itemordered INNER JOIN
 	product ON product.product_id = itemordered.productID GROUP BY productname ORDER BY sum(quantity) DESC LIMIT 1";
-	$result2 = mysqli_query($db, $query2) or die ("Error Querying Database ");
+	$result2 = mysqli_query($db, $query2) or die ("Error Querying Database in most popular order");
 	$row2 = mysqli_fetch_array ($result2);
 	$pop = $row2[0];
 	echo "<p> $pop </p>";
