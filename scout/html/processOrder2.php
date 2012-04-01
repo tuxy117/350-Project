@@ -91,7 +91,7 @@
 	$query2 = "insert into product(name, price) values
 			('$ftdon','$b')";
 	
-	$result2 = mysqli_query($db, $query) or die("Error Querying Database in 30 donation");
+	$result2 = mysqli_query($db, $query2) or die("Error Querying Database in 30 donation");
 	$b = $b * $tdoncount;
 	//Rebecca Wright's - Inserting into items ordered.
 	$tdon_id=mysqli_insert_id($db);
