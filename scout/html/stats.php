@@ -20,7 +20,9 @@
 	product ON product.product_id = itemordered.productID WHERE product.name LIKE '%donation%' ORDER BY 
 	itemordered.quantity DESC LIMIT 1";
 	$result = mysqli_query($db, $query) or die("Error Querying Database in highest military donation");
-	
+	$row = mysqli_fetch_array ($result);
+	$pop = $row[0];
+	echo "<p> $pop </p>";
 	?>
 	
 <h3>The Most Popular Item</h3>
