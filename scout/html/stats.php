@@ -9,16 +9,38 @@
 		<a href="index.html" > <img src="images/header.jpg"> </a>
 		</td>
 <h1>STATS</h1>
+
+<h3>Highest Military Donation</h3>
+
+<?php
+
+// Highest military donation by Angie
+	include('dbconnect.php');
+	$query = "SELECT product.name as productname, itemordered.quantity AS quantity FROM itemordered INNER JOIN 
+	product ON product.product_id = itemordered.productID WHERE product.name LIKE '%donation%' ORDER BY 
+	itemordered.quantity DESC LIMIT 1";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in highest military donation");
+	
+	?>
+	
+<h3>The Most Popular Item</h3>
+<?php
+	
+	// Here is our most popular order!  - Angie
+	$query2 = "select product.name as productname, sum(itemordered.quantity) AS quantity FROM itemordered INNER JOIN
+	product ON product.product_id = itemordered.productID GROUP BY productname ORDER BY sum(quantity) DESC LIMIT 1";
+	$result2 = mysqli_query($db, $query2) or die ("Error Querying Database in most popular order");
+	$row2 = mysqli_fetch_array ($result2);
+	$pop = $row2[0];
+	echo "<p> $pop </p>";
+	
+?>
 		
 <h3>Total Donations to the Military</h3>
-
-
-
 <?php
 
 //Ben Tuxbury query to find the total amount donated to the military
 	//first total the 50 dollar donations.
-	include('dbconnect.php'); 
 			// Use the same thing that would be typed into MySql
 	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '50 military donation'";
 	
@@ -48,25 +70,8 @@
 	echo "<p> $$sumTotal </p>";
 ?>
 
-<h3>The Most Popular Item</h3>
 
-<?php
-	
-	// Highest military donation by Angie
-	$query = "SELECT product.name as productname, itemordered.quantity AS quantity FROM itemordered INNER JOIN 
-	product ON product.product_id = itemordered.productID WHERE product.name LIKE '%donation%' ORDER BY 
-	itemordered.quantity DESC LIMIT 1";
-	$result = mysqli_query($db, $query) or die("Error Querying Database in highest military donation");
-	
-	// Here is our most popular order!  - Angie
-	$query2 = "select product.name as productname, sum(itemordered.quantity) AS quantity FROM itemordered INNER JOIN
-	product ON product.product_id = itemordered.productID GROUP BY productname ORDER BY sum(quantity) DESC LIMIT 1";
-	$result2 = mysqli_query($db, $query2) or die ("Error Querying Database in most popular order");
-	$row2 = mysqli_fetch_array ($result2);
-	$pop = $row2[0];
-	echo "<p> $pop </p>";
-	
-?>
+
 
 <h3>Troops participating in Sales</h3>
 <?php
