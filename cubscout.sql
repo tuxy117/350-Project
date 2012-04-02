@@ -16,8 +16,18 @@ CREATE TABLE product(
 	PRIMARY KEY (product_id)
 	);
 	
-INSERT INTO product(name, price)
-	SELECT name, price FROM product GROUP BY name ORDER BY name;
+INSERT INTO product(name, price) VALUES 
+	('$50 Military Donation', '50.00'),
+	('$30 Military Donation', '30.00'),
+	('Sweet and Savory Collection', '40.00'),
+	('Cheese Lover''s Collection', '30.00'),
+	('White Chocolatey Pretzels', '25.00'),
+	('Chocolate Triple Delight', '20.00'),
+	('18pk Kettle Corn', '20.00'),
+	('18pk Unbelievable Butter', '16.00'),
+	('18pk Butter Light', '16.00'),
+	('Caramel Corn alm/cas/pec', '16.00'),
+	('Caramel Corn', '10.00');
 	
 CREATE TABLE scout(
 	scout_id int NOT NULL auto_increment,
