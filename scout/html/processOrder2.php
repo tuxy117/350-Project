@@ -21,9 +21,9 @@
 	$sname=$_POST['sname'];  //names here caused (didnt match) Ben fixed
 	$stroop=$_POST['stroop'];
 	$fdon = $_POST['50don'];
-	$ftdon = '50 military donation';
+	$ftdon = '$50 military donation';
 	$a = 50.00;
-	$tdon= '30 military donation';  // Angie updated spelling of "military"
+	$tdon= '$30 military donation';  // Angie updated spelling of "military"
 	$tdoncount = $_POST['30don'];	# Rebecca's edit
 	$b = 30;
 	
@@ -66,18 +66,17 @@
 	
 	
 	//Rebecca Wright's - Inserting into product table.
-	$query = "insert into product(name, price) values
-			('$ftdon','$a')";
-	
-	$result = mysqli_query($db, $query) or die("Error Querying Database in 50 donation");
-	$fdon_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='$ftdon';";
+    $result = mysqli_query($db, $query) or die("Error Querying Database in 50 donation");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$a = $a * $fdon;		// Gives the total amount
 	//Rebecca Wright's - Inserting into item's ordered.
-	$query2="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ($orderID,$fdon_id,$fdon,$a)";
+	$query2="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ($orderID,$productID,$fdon,$a)";
 	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part of 50Don");
 	//End of Rebecca's query	
 					
-	echo "<p> 50 dollar military donation at quantity $fdon </p>";
+	echo "<p> $ftdon at quantity $fdon </p>";
 	}
 	else{ 
 	$a= 0;
@@ -88,14 +87,14 @@
 	{
 	
 	//Rebecca Wright's - Inserting into product table.
-	$query2 = "insert into product(name, price) values
-			('$tdon','$b')";
+	$query = "SELECT product_id from product where name='$tdon';";
 	
-	$result2 = mysqli_query($db, $query2) or die("Error Querying Database in 30 donation");
+	$result = mysqli_query($db, $query) or die("Error Querying Database in 30 donation");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$b = $b * $tdoncount;
 	//Rebecca Wright's - Inserting into items ordered.
-	$tdon_id=mysqli_insert_id($db);
-	$query3="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$tdon_id,'$tdoncount','$b');";
+	$query3="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$productID,'$tdoncount','$b');";
 	$result3=mysqli_query($db,$query3) or die("Error Querying Database Final Part of 30Don");
 	//End of Rebecca's query
 	//End of Rebecca's query	
@@ -106,15 +105,15 @@
 	}
 	if ($sweetNsavory>= "1")	# Rebecca's edit I inserted this for James
 	{
-	$query4 = "insert into product(name, price) values
-			('Sweet And Savory','$c')";
+	$query = "SELECT product_id from product where name='Sweet and Savory Collection';";
 	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in sweet");
-	$sweet_id=mysqli_insert_id($db);
+	$result = mysqli_query($db, $query) or die("Error Querying Database in sweet");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$c = $c * $sweetNsavory;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$sweet_id,'$sweetNsavory','$c');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$productID,'$sweetNsavory','$c');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part sweet");
 	//End of Rebecca's query
 		
@@ -129,15 +128,14 @@
 	if ($cheeseqty>= "1")
 	{
 		
-	$query4 = "insert into product(name, price) values
-			('Cheese Lovers Collection','$d')";
-	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in cheese");
-	$cheese_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='Cheese Lover''s Collection';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in cheese");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$d = $d * $cheeseqty;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$cheese_id,'$cheeseqty','$d');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$productID,'$cheeseqty','$d');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part cheese");
 	echo "<p> Cheese Lover's Collection at quantity $cheeseqty</p>";
 	
@@ -148,15 +146,14 @@
 	if ($pretzelqty>= "1") 
 	{
 	
-	$query4 = "insert into product(name, price) values
-			('White Chocolatey Pretels','$e')";
-	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in pretezel");
-	$pretzel_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='White Chocolatey Pretzels';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in pretezel");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$e = $e * $pretzelqty;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$pretzel_id,'$pretzelqty','$e');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$productID,'$pretzelqty','$e');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part pretzel");
 	//End of Rebecca's query
 	
@@ -168,16 +165,14 @@
 	}
 	if ($tripleD>= "1") 
 	{
-
-	$query4 = "insert into product(name, price) values
-			('Chocolate Triple Delight','$f')";
-	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in triple");
-	$triple_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='Chocolate Triple Delight';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in chocolate delight");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$f = $f * $tripleD;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $triple_id,'$tripleD','$f');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$tripleD','$f');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part triple");
 	//End of Rebecca's query
 	echo "<p> Chocolate Triple Delight at quantity $tripleD</p>";
@@ -188,15 +183,15 @@
 	}
 	if ($kettleqty>= "1")
 	{
-	$query4 = "insert into product(name, price) values
-			('18pk Kettle Corn','$g')";
+	$query = "SELECT product_id from product where name='18pk Kettle Corn';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in kettle");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in kettle");
-	$kettle_id=mysqli_insert_id($db);
 	$g = $g * $kettleqty;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $kettle_id,'$kettleqty','$f');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$kettleqty','$f');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part kettle");
 	//End of Rebecca's query
 	 echo "<p> 18pk Kettle corn at quantity $kettleqty</p>";
@@ -207,16 +202,15 @@
 	}
 	if ($Ubutterqty>= "1") 
 	{
-	
-	$query4 = "insert into product(name, price) values
-			('18pk Kettle Corn','$h')";
-	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in butter");
-	$butter_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='18pk Unbelievable Butter';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in butter");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
+
 	$h = $h * $Ubutterqty;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $butter_id,'$Ubutterqty','$h');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$Ubutterqty','$h');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part butter");
 	//End of Rebecca's query
 	echo "<p> 18pk Unbelievable Butter at quantity $Ubutterqty</p>";
@@ -228,15 +222,14 @@
 	if ($butterLqty>= "1")
 	{
 	
-	$query4 = "insert into product(name, price) values
-			('18pk Kettle Corn','$i')";
-	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in butterLight");
-	$butterLight_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='18pk Butter Light';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in butterLight");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$i = $i * $butterLqty;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $butterLight_id,'$butterLqty','$i');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$butterLqty','$i');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part butterLight");
 	//End of Rebecca's query
 	 echo "<p> 18pk Butter Light at quantity $butterLqty</p>";
@@ -248,15 +241,14 @@
 	if ($ccqty>= "1")
 	{
 	
-	$query4 = "insert into product(name, price) values
-			('18pk Kettle Corn','$j')";
-	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in Popcorn and nuts");
-	$ccqty_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='Caramel Corn alm/cas/pec';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in Popcorn and Nuts");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$j = $j * $ccqty;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $ccqty_id,'$ccqty','$j');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$ccqty','$j');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part Popcorn and Nuts");
 	//End of Rebecca's query
 	 echo "<p> Caramel Corn alm/cas/pec at quantity $ccqty</p>";
@@ -268,15 +260,14 @@
 	if ($Caramelqty>= "1")
 	{
 	
-	$query4 = "insert into product(name, price) values
-			('18pk Kettle Corn','$k')";
-	
-	$result4 = mysqli_query($db, $query4) or die("Error Querying Database in Caramel");
-	$caramel_id=mysqli_insert_id($db);
+	$query = "SELECT product_id from product where name='Caramel Corn';";
+	$result = mysqli_query($db, $query) or die("Error Querying Database in Caramel");
+	$row=mysqli_fetch_array($result);
+	$productID=$row['product_id'];
 	$k = $k * $Caramelqty;
 	//Rebecca Wright's - Inserting into item's ordered.
 	
-	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $caramel_id,'$Caramelqty','$k');";
+	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$Caramelqty','$k');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part Caramel");
 	//End of Rebecca's query
 	 echo "<p> Caramel Corn at quantity $Caramelqty</p>";
