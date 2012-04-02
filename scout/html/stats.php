@@ -44,7 +44,7 @@
 //Ben Tuxbury query to find the total amount donated to the military
 	//first total the 50 dollar donations.
 			// Use the same thing that would be typed into MySql
-	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '50 military donation'";
+	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE name = '50 military donation'";
 	
 	$result = mysqli_query($db, $query) or die("Error Querying Database in 50 military donation");
 			// set it so the row can actually be accessed
@@ -57,7 +57,7 @@
 	
 	
 	
-	$query = "select SUM(quantity) FROM popcorn_sales WHERE product = '30 dollar military donation'";
+	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE name = '30 military donation'";
 	
 	$result = mysqli_query($db, $query) or die("Error Querying Database in 30 military donation");
 			
