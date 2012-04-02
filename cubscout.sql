@@ -14,7 +14,11 @@ CREATE TABLE product(
 	name VARCHAR(40) NOT NULL,
 	price decimal(5,2) DEFAULT NULL,
 	PRIMARY KEY (product_id)
-);
+	);
+	
+INSERT INTO product(name, price)
+	SELECT name, price FROM product GROUP BY name ORDER BY name;
+	
 CREATE TABLE scout(
 	scout_id int NOT NULL auto_increment,
 	Name VARCHAR(60) NOT NULL,
