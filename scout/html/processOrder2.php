@@ -289,9 +289,19 @@
 	
 	
 	echo "<p> Your total is $total</p>";
-	echo "<p>Order processed at. ";
-	echo date('H:i, jS F Y');
-	echo "</p>";
+	echo "<p>Order processed at: </p>";
+//Jim used the advanced sql query to get the Date and Time and then display them
+	$query6 = "SELECT current_date";
+	$result6 = mysqli_query($db, $query6) or die("Error Querying Database");
+	$row = mysqli_fetch_array ($result6);
+	$td = $row[0];
+	$query7 = "SELECT current_time";
+	$result7 = mysqli_query($db, $query7) or die("Error Querying Database");
+	$row2 = mysqli_fetch_array ($result7);
+	$tt = $row2[0];
+	echo "<p> $td </p>";
+	echo "<p> $tt </p>";
+	
 
 
 	
