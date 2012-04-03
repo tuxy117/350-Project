@@ -93,7 +93,8 @@
 
 <h3>Top Scouts</h3>
 <?php
-	$query = "select Distinct name from scout group by name order by count(name) desc";
+//Added distinct to Ben's query
+	$query = "select Distince name from scout group by name order by count(name) desc";
 	$result = mysqli_query($db, $query) or die("Error querying database");
 	$wp ="";
 	while ($row = mysqli_fetch_array($result))
@@ -108,7 +109,7 @@
 	<?php
 		//Rebecca Wright to demonstrat the indexing on a non primary key
 
-	$support="Select name from buyer";
+	$support="Select Distinct name from buyer";
 	$result=mysqli_query($db,$support) or die ("Error querying supporters");
 	
 	while($row=mysqli_fetch_array($result))
