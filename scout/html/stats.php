@@ -45,26 +45,28 @@
 	//first total the 50 dollar donations.
 			// Use the same thing that would be typed into MySql
 //Jim fixed queries after tables were changed to 3nf
-	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE name = '50 military donation'";
+	$query = "select SUM(itemordered.quantity) FROM itemordered INNER JOIN product ON product.product_id = 
+	itemordered.productID WHERE product.name = '$50 Military Donation'";
 	
 	$result = mysqli_query($db, $query) or die("Error Querying Database in 50 military donation");
 			// set it so the row can actually be accessed
 	$row = mysqli_fetch_array($result);
 			// extract the variable needed
-	$mil50 = $row['SUM(quantity)'];
+	$mil50 = $row['SUM(product.quantity)'];
 	
 	$const50 = 50;
 	$sum50s = $mil50 * $const50;
 	
 	
 	
-	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE name = '30 military donation'";
+	$query2 = "select SUM(itemordered.quantity) FROM itemordered INNER JOIN product ON product.product_id = 
+	itemordered.productID WHERE product.name = '$30 Military Donation'";
 	
-	$result = mysqli_query($db, $query) or die("Error Querying Database in 30 military donation");
+	$result2 = mysqli_query($db, $query2) or die("Error Querying Database in 30 military donation");
 			
 	$row = mysqli_fetch_array($result);
 			
-	$mil30 = $row['SUM(quantity)'];
+	$mil30 = $row['SUM(product.quantity)'];
 	
 	$const30 = 30;
 	$sum30s = $mil30 * $const30;
