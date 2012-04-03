@@ -45,7 +45,7 @@
 	//first total the 50 dollar donations.
 			// Use the same thing that would be typed into MySql
 //Jim fixed queries after tables were changed to 3nf
-	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE name = '50 military donation'";
+	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE product.name = '$50 Military Donation'";
 	
 	$result = mysqli_query($db, $query) or die("Error Querying Database in 50 military donation");
 			// set it so the row can actually be accessed
@@ -58,7 +58,7 @@
 	
 	
 	
-	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE name = '30 military donation'";
+	$query = "select SUM(quantity) FROM itemordered INNER JOIN product ON product.product_id = itemordered.productID WHERE product.name = '$30 Military Donation'";
 	
 	$result = mysqli_query($db, $query) or die("Error Querying Database in 30 military donation");
 			
