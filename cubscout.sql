@@ -45,6 +45,7 @@ CREATE TABLE buyer(
 	CONSTRAINT customerOrder_orderID_fk FOREIGN KEY (orderNum) REFERENCES customerOrder(order_id),
 	PRIMARY KEY(buyer_id)
 );
+CREATE INDEX buyerName ON buyer(name);
 CREATE TABLE itemordered(
 	id int NOT NULL AUTO_INCREMENT,
 	orderID INT NOT NULL,

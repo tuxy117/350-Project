@@ -93,7 +93,7 @@
 
 <h3>Top Scouts</h3>
 <?php
-	$query = "select name from scout group by name order by count(name) desc";
+	$query = "select Distinct name from scout group by name order by count(name) desc";
 	$result = mysqli_query($db, $query) or die("Error querying database");
 	$wp ="";
 	while ($row = mysqli_fetch_array($result))
@@ -104,6 +104,20 @@
 	$wp = $ap;	
 }
 	?>
+	<h3>Our Supporters: </h3>
+	<?php
+		//Rebecca Wright to demonstrat the indexing on a non primary key
+
+	$support="Select name from buyer";
+	$result=mysqli_query($db,$support) or die ("Error querying supporters");
+	
+	while($row=mysqli_fetch_array($result))
+	{
+		$name= $row['name'];
+		echo " $name</br> ";
+
+		}
+		?>
 <h2>Thank you for your generosity!</h2>
 </body>
 <html>
