@@ -3,12 +3,11 @@
 		<a href="index.html" > <img src="images/header.jpg"> </a>
 		</td>
 <head>
-	<title>Pack 207 Trails End - Order Results</title>
+	<title>Order Results</title> //Made some formatting changes -Angie
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
-<h1>Pack 207</h1>
-<h2>Order Results</h2>
+<h1>Order Results</h1>
 
 
 <?php
@@ -64,7 +63,7 @@
 	
 //Rebecca's overall edit note: Moved the total per item(s) so that they fell within the queries
 // this way this initall price is not affected in the product table.	
-	echo "<p>Thank you $firstname $lastname</p>";
+	echo "<p>Thank you, $firstname $lastname!</p>";
 	if ($fdon>= "1") 
 	{
 	
@@ -80,7 +79,7 @@
 	$result3=mysqli_query($db,$query2) or die("Error Querying Database Final Part of 50Don");
 	//End of Rebecca's query	
 					
-	echo "<p> $ftdon at quantity $fdon </p>";
+	echo "<p> $50 Military Donation - quantity $fdon </p>";
 	}
 	else{ 
 	$a= 0;
@@ -102,7 +101,7 @@
 	$result3=mysqli_query($db,$query3) or die("Error Querying Database Final Part of 30Don");
 	//End of Rebecca's query
 	//End of Rebecca's query	
-	echo "<p> 30 dollar military donation at quantity $tdoncount </p>";
+	echo "<p> $30 Military Donation - quantity $tdoncount </p>";
 	}
 	else{ 
 	$b= 0;
@@ -123,7 +122,7 @@
 		
 
 	//End of Rebecca's query	
-	echo "<p> Sweet and Savory at quantity $sweetNsavory</p>";
+	echo "<p> Sweet and Savory Collection - quantity $sweetNsavory</p>";
 	
 	}
 	else{ 
@@ -141,7 +140,7 @@
 	
 	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID',$productID,'$cheeseqty','$d');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part cheese");
-	echo "<p> Cheese Lover's Collection at quantity $cheeseqty</p>";
+	echo "<p> Cheese Lover's Collection - quantity $cheeseqty</p>";
 	
 	}
 	else{ 
@@ -161,7 +160,7 @@
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part pretzel");
 	//End of Rebecca's query
 	
-	echo "<p> White Chocolatey Pretzels at quantity $pretzelqty</p>";
+	echo "<p> White Chocolatey Pretzels - quantity $pretzelqty</p>";
 	
 	}
 	else{ 
@@ -179,7 +178,7 @@
 	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$tripleD','$f');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part triple");
 	//End of Rebecca's query
-	echo "<p> Chocolate Triple Delight at quantity $tripleD</p>";
+	echo "<p> Chocolate Triple Delight - quantity $tripleD</p>";
 	
 	}
 	else{ 
@@ -198,7 +197,7 @@
 	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$kettleqty','$f');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part kettle");
 	//End of Rebecca's query
-	 echo "<p> 18pk Kettle corn at quantity $kettleqty</p>";
+	 echo "<p> 18pk Kettle Corn - quantity $kettleqty</p>";
 	
 	}
 	else{ 
@@ -217,7 +216,7 @@
 	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$Ubutterqty','$h');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part butter");
 	//End of Rebecca's query
-	echo "<p> 18pk Unbelievable Butter at quantity $Ubutterqty</p>";
+	echo "<p> 18pk Unbelievable Butter - quantity $Ubutterqty</p>";
 	
 	}
 	else{ 
@@ -236,7 +235,7 @@
 	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$butterLqty','$i');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part butterLight");
 	//End of Rebecca's query
-	 echo "<p> 18pk Butter Light at quantity $butterLqty</p>";
+	 echo "<p> 18pk Butter Light - quantity $butterLqty</p>";
 	
 	}
 	else{ 
@@ -255,7 +254,7 @@
 	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$ccqty','$j');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part Popcorn and Nuts");
 	//End of Rebecca's query
-	 echo "<p> Caramel Corn alm/cas/pec at quantity $ccqty</p>";
+	 echo "<p> Caramel Corn alm/cas/pec - quantity $ccqty</p>";
 	
 	}
 	else{ 
@@ -274,7 +273,7 @@
 	$query5="INSERT INTO itemordered (orderID,productID,quantity, totalPerItem) VALUES ('$orderID', $productID,'$Caramelqty','$k');";
 	$result5=mysqli_query($db,$query5) or die("Error Querying Database Final Part Caramel");
 	//End of Rebecca's query
-	 echo "<p> Caramel Corn at quantity $Caramelqty</p>";
+	 echo "<p> Caramel Corn - quantity $Caramelqty</p>";
 	
 	} 
 	
@@ -284,7 +283,7 @@
 	
 	
 	echo "<p> Your total is $total</p>";
-	echo "<p>Order processed at: </p>";
+	
 //Jim used the advanced sql query to get the Date and Time and then display them
 	$query6 = "SELECT current_date";
 	$result6 = mysqli_query($db, $query6) or die("Error Querying Database");
@@ -294,8 +293,7 @@
 	$result7 = mysqli_query($db, $query7) or die("Error Querying Database");
 	$row2 = mysqli_fetch_array ($result7);
 	$tt = $row2[0];
-	echo "<p> $td </p>";
-	echo "<p> $tt </p>";
+	echo "<p>Order processed at: $td $tt </p>";
 	
 
 
