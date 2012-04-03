@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Military Donations</title>
+	<title>Cub Scout Popcorn Sales</title>
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
