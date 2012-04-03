@@ -3,7 +3,7 @@
 		<a href="index.html" > <img src="images/header.jpg"> </a>
 		</td>
 <head>
-	<title>Order Results</title> //Made some formatting changes -Angie
+	<title>Order Results</title>
 <!-- Jim wrote the main file with the insert statements that inserts the information into the mysqldatabase -->
 </head>
 <body>
@@ -11,6 +11,7 @@
 
 
 <?php
+//Made some minor formatting changes throughout- Angie
 	include('dbconnect.php'); # Rebecca's edit
 // Rebecca's edit I rearranged some of the code so that the variables are changed before displayed. And I changed a few syntax things.	
 	$firstname = $_POST['firstname'];
@@ -282,7 +283,7 @@
 	}
 	
 	
-	echo "<p> Your total is $total</p>";
+	echo "<p> Your total is $$total.00!</p>";
 	
 //Jim used the advanced sql query to get the Date and Time and then display them
 	$query6 = "SELECT current_date";
@@ -293,7 +294,7 @@
 	$result7 = mysqli_query($db, $query7) or die("Error Querying Database");
 	$row2 = mysqli_fetch_array ($result7);
 	$tt = $row2[0];
-	echo "<p>Order processed at: $td $tt </p>";
+	echo "<p>Order processed on $td at $tt. </p>";
 	
 
 
