@@ -94,7 +94,7 @@
 <h3>Top Scouts</h3>
 <?php
 //Added distinct to Ben's query
-	$query = "select Distince name from scout group by name order by count(name) desc";
+	$query = "select Distinct name from scout group by name order by count(name) desc";
 	$result = mysqli_query($db, $query) or die("Error querying database");
 	$wp ="";
 	while ($row = mysqli_fetch_array($result))
